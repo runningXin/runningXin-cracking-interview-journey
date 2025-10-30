@@ -20,3 +20,15 @@ The first word with frequency 1 is "brown".
 
 **/
 
+public class FirstUniqueWord {
+
+    String findFirstUniqueWord(){
+        return "_";
+    }
+
+    public static void main(String[] args){
+        FirstUniqueWord obj = new FirstUniqueWord();
+        System.out.println(obj.findFirstUniqueWord());
+    }
+}
+
