@@ -1,59 +1,42 @@
 # 🏃‍♀️ runningXin — Cracking Interview Journey
 
-Welcome to my **interview preparation repository**, where I record my learning journey through **Algorithms**, **Object-Oriented Design (OOD)**, and **System Design (SD)**.
+Welcome to my **interview preparation repository**, where I record my journey through **Algorithms**, **Object-Oriented Design (OOD)**, **System Design (SD)**, and **real-world backend practice**.
 
-This repo documents both my technical growth and my reflections along the way.
-
----
-
-## 📘 Folder Structure
-
-| Folder | Description |
-|--------|--------------|
-| **algos/** | Algorithm practice — each problem has its own folder (e.g. `0001-two-sum/`, `0146-lru-cache/`), containing notes and/or runnable code. |
-| **OOD/** | Object-Oriented Design problems and patterns (e.g. Parking Lot, Elevator, Coffee Machine). |
-| **SD/** | System Design discussions — architecture, scalability, trade-offs, and diagrams. |
+This is more than just LeetCode — it's a comprehensive and evolving archive of my problem-solving, design thinking, and backend engineering growth.
 
 ---
 
-## 🧩 Example Folder — Algos
+## 📂 Folder Structure
 
-Example: `algos/0001-two-sum/notes.md`
+| Folder              | Description |
+|---------------------|-------------|
+| **algos/**          | Algorithm practice — each problem in its own folder (e.g. `0132-palindrome-partitioning-ii/`, `0872-leaf-similar-trees/`), with notes and clean Java code. |
+| **OOD/**            | Object-Oriented Design problems and patterns (e.g. Parking Lot, Elevator, File System). |
+| **SD/**             | System Design discussions — architecture, trade-offs, bottlenecks, diagrams. |
+| **backend-practice/** | Real-world backend exercises — including RESTful validation, Spring Boot, Kafka producers, async messaging, etc. Built to simulate engineering test scenarios. |
+
+---
+
+## 🧠 Example — Algos
+
+Example: `algos/0872-leaf-similar-trees/notes.md`
 
 ```markdown
-# 0001. Two Sum
+# 0872. Leaf-Similar Trees
 **Difficulty:** Easy  
 **Language:** Java  
-**Tags:** Array, HashMap
+**Tags:** Tree, DFS
 
 ## Approach
-Use a HashMap to store complement and index.
+- Use DFS to collect all leaf values from both trees
+- Compare the leaf value sequences
 
 ## Code
 ```java
-public int[] twoSum(int[] nums, int target) {
-    Map<Integer, Integer> map = new HashMap<>();
-    for (int i = 0; i < nums.length; i++) {
-        int complement = target - nums[i];
-        if (map.containsKey(complement)) {
-            return new int[]{map.get(complement), i};
-        }
-        map.put(nums[i], i);
-    }
-    return new int[]{};
+public boolean leafSimilar(TreeNode root1, TreeNode root2) {
+    List<Integer> leaves1 = new ArrayList<>();
+    List<Integer> leaves2 = new ArrayList<>();
+    dfs(root1, leaves1);
+    dfs(root2, leaves2);
+    return leaves1.equals(leaves2);
 }
-```
-```
-
----
-
-## 🎯 Goals
-- Archive every solved problem with clean code and concise notes  
-- Strengthen problem-solving and design skills  
-- Build a long-term reference base for interviews
-
----
-
-## 🌱 About Me
-I’m **Xin Liu**, a backend software engineer passionate about clean design, distributed systems, and continuous learning.  
-This repo is part of my personal journey toward mastery — one problem at a time. 💪
