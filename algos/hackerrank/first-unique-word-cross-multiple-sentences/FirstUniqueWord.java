@@ -19,16 +19,43 @@ Normalized words: the(3), quick(2), brown(1), fox(2), jumped(1), over(1), lazy(1
 The first word with frequency 1 is "brown".
 
 **/
+import java.util.*;
 
 public class FirstUniqueWord {
 
-    String findFirstUniqueWord(){
+    public static String findFirstUniqueWord(String[] sentences){
+        Map<String, Integer> map = new HashMap<>();
+        for(String s : sentences) {
+            System.out.println(s);
+            //s = s.toLowerCase(Locale.ROOT).replaceAll("[\\.,!?:;]+", " ");
+            //s = s.replaceAll("[.,!?:;]+","" );
+            s = s.replaceAll("[.,!?:;]"," " );
+            System.out.println(s);
+            String[] words = s.trim().split("\\s+");
+            Set<String> set = new HashSet<>();
+            for(String word: words){
+                word = word.toLowerCase();
+                if(set.add(word))
+                    map.put(word, map.getOrDefault(word, 0) + 1);
+            }
+        }
+
+        for(String s : sentences){
+            s = s.toLowerCase(Locale.ROOT).replaceAll("[\\.,!?:;]+", " ");
+            String[] words = s.trim().split("\s+");
+
+            for (String word : words) {
+                word = word.toLowerCase();
+                if(map.get(word) == 1)
+                    return word;
+            }
+        }
+
         return "_";
     }
 
     public static void main(String[] args){
-        FirstUniqueWord obj = new FirstUniqueWord();
-        System.out.println(obj.findFirstUniqueWord());
+        System.out.println(findFirstUniqueWord(args));
     }
 }
 
